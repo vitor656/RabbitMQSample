@@ -15,7 +15,7 @@ namespace RabbitMQSample.Producer
 
         public override void Publish<T>(T message)
         {
-            using var connection = connectionProvider.GetConnection();
+            var connection = connectionProvider.GetConnection();
             using var channel = connection.CreateModel();
 
             channel.ExchangeDeclare(producerConfigurations.Exchange, ExchangeType.Direct);

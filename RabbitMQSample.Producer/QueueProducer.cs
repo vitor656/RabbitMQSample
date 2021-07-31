@@ -21,7 +21,7 @@ namespace RabbitMQSample.Shared
 
         public void Publish()
         {
-            using var connection = connectionProvider.GetConnection();
+            var connection = connectionProvider.GetConnection();
             using var channel = connection.CreateModel();
 
             channel.QueueDeclare("demo-queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
